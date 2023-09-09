@@ -1,3 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evidencija</title>
+    <style>
+        table {
+        border-collapse: collapse;
+        width: 60%;
+        }
+
+        th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid black;
+        }
+
+        tr:hover {background-color: lightgreen;}
+    </style>
+</head>
+<body>
+    <h1>Evidencija ocjena, grupna vježba</h1>
+
+
 <?php
 
     //privremeni debuging
@@ -9,9 +35,6 @@
     include_once "Model.php";
     include_once "View.php";
     include_once "Controller.php";
-
-
-    // todo: signup - login - logout izbor
 
     $config=new Config("config.ini");
     $db=Database::getInstance($config);
@@ -53,3 +76,8 @@
     <?php if ($message_bad) ?>
     <h3  style="color: red";><?php echo $message_bad; ?></h3>
     <php endif; ?>  
+
+
+    
+</body>
+</html>

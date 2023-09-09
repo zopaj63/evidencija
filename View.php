@@ -8,15 +8,13 @@ class OcjenaView
     {
         echo'
         <hr>
-        <h3>Unos ocjena</h3>
-            <hr>
-            <p>Ispunite polja:</p>
+        <h2>Unos ocjena</h2>
             <form method="post" action="">
                 <input type="text" name ="predmet" placeholder="Predmet" required><br><br>
                 <input type="number" name ="ocjena" placeholder="Ocjena" required><br><br>
                 <input type="number" name ="studenti_id" placeholder="ID studenta" required><br><br>
 
-                <input type="submit" value="Upiši">
+                <input type="submit" value="Upiši ocjenu">
             </form>
             <hr>
         ';
@@ -52,28 +50,28 @@ class OcjenaView
         public function prikaziEvidencija($evidencija)
         {
             echo "<h2>Evidencija ocjena</h2>";
-            echo "<table border=1>
+            echo "<table>
             <tr>
                 <th>Ime</th>
                 <th>Prezime</th>
                 <th>ID studenta</th>
                 <th>Predmet</th>
                 <th>Ocjena</th>
-            </tr>
-            </table><br>";
+            </tr>";
     
             foreach($evidencija as $ev)
             {
-                echo "<table border=1>
-                <tr>
-                    <td>{$ev['ime']}</td>
-                    <td>{$ev['prezime']}</td>
-                    <td>{$ev['studenti_id']}</td>
-                    <td>{$ev['predmet']}</td>
-                    <td>{$ev['ocjena']}</td>
-                </tr>
-                </table>";
+                echo "
+                    <tr>
+                        <td>{$ev['ime']}</td>
+                        <td>{$ev['prezime']}</td>
+                        <td>{$ev['studenti_id']}</td>
+                        <td>{$ev['predmet']}</td>
+                        <td>{$ev['ocjena']}</td>
+                    </tr>";
+                
             }
+            echo "</table>";
         }
 
 
