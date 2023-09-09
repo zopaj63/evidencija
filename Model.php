@@ -49,6 +49,15 @@ class OcjenaModel
 
     }
 
+    // dohvat evidencije iz baze
+    public function dohvatiEvidencija()
+    {
+        $stmt=$this->conn->prepare("SELECT studenti.ime, studenti.prezime, ocjene.studenti_id, ocjene.predmet, ocjene.ocjena FROM ".$this->table." INNER JOIN studenti ON ".$this->table.".studenti_id=studenti.id");
+        $stmt->execute();
+        return $stmt;
+    
+    }
+
 
 
 

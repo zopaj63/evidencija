@@ -34,9 +34,13 @@
     $controller=new EvidencijaController($model, $view);
     
 
-    // ispis ocjena
-    $controller->prikaziSveOcjene();
-    $message_good="Uspješan prikaz svih ocjena";
+    // ispis svih ocjena
+    //$controller->prikaziSveOcjene();
+    //$message_good="Uspješan prikaz svih ocjena";
+
+    // ispis evidencije
+    $controller->prikaziEvidencija();
+    $message_good="Uspješan prikaz evidencije";
 
 
 ?>

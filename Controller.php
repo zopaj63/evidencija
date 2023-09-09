@@ -37,12 +37,18 @@ class EvidencijaController
 
 
 
-    // prikaz svih korisnika iz baze
+    // prikaz svih ocjena iz baze
     public function prikaziSveOcjene()
     {
         $sve_ocjene=$this->model->dohvatiSveOcjene()->fetchAll(PDO::FETCH_ASSOC);
         $this->view->prikaziOcjene($sve_ocjene);
-        $message_good="Uspješan prikaz svih korisnika!";
+    }
+
+    // prikaz evidencije iz baze
+    public function prikaziEvidencija()
+    {
+        $evidencija=$this->model->dohvatiEvidencija()->fetchAll(PDO::FETCH_ASSOC);
+        $this->view->prikaziEvidencija($evidencija);
     }
 
     // obrada forme za upis ocjene

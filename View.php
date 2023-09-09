@@ -16,13 +16,13 @@ class OcjenaView
                 <input type="number" name ="ocjena" placeholder="Ocjena" required><br><br>
                 <input type="number" name ="studenti_id" placeholder="ID studenta" required><br><br>
 
-                <input type="submit" value="Pošalji">
+                <input type="submit" value="Upiši">
             </form>
             <hr>
         ';
     }
 
-    // ispis svih ocjena iz baze, radi kontrole funkcionalnosti
+    // ispis svih ocjena iz baze
     public function prikaziOcjene($sve_ocjene)
     {
         echo "<h2>Popis svih ocjena</h2>";
@@ -47,6 +47,34 @@ class OcjenaView
             </table>";
         }
     }
+
+        // ispis evidencije iz baze
+        public function prikaziEvidencija($evidencija)
+        {
+            echo "<h2>Evidencija ocjena</h2>";
+            echo "<table border=1>
+            <tr>
+                <th>Ime</th>
+                <th>Prezime</th>
+                <th>ID studenta</th>
+                <th>Predmet</th>
+                <th>Ocjena</th>
+            </tr>
+            </table><br>";
+    
+            foreach($evidencija as $ev)
+            {
+                echo "<table border=1>
+                <tr>
+                    <td>{$ev['ime']}</td>
+                    <td>{$ev['prezime']}</td>
+                    <td>{$ev['studenti_id']}</td>
+                    <td>{$ev['predmet']}</td>
+                    <td>{$ev['ocjena']}</td>
+                </tr>
+                </table>";
+            }
+        }
 
 
 }
