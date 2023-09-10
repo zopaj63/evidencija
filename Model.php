@@ -40,10 +40,10 @@ class OcjenaModel
 
     }
 
-    // dohvat svih ocjena iz baze
-    public function dohvatiSveOcjene()
+    // dohvat svih ocjena 5 iz baze
+    public function dohvatiSveOcjene5()
     {
-        $stmt=$this->conn->prepare("SELECT * FROM ".$this->table);
+        $stmt=$this->conn->prepare("SELECT studenti.ime, studenti.prezime, ocjene.studenti_id, ocjene.predmet, ocjene.ocjena FROM ".$this->table." INNER JOIN studenti ON ".$this->table.".studenti_id=studenti.id WHERE ocjene.ocjena=5");
         $stmt->execute();
         return $stmt;
 

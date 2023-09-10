@@ -16,40 +16,42 @@ class OcjenaView
 
                 <input type="submit" value="Upiši ocjenu">
             </form>
-            <hr>
+            <br><hr>
         ';
     }
 
-    // ispis svih ocjena iz baze
-    public function prikaziOcjene($sve_ocjene)
+    // ispis svih ocjena 5 iz baze
+    public function prikaziOcjene5($sve_ocjene5)
     {
-        echo "<h2>Popis svih ocjena</h2>";
-        echo "<table border=1>
+        echo "<h2>Popis svih odlikaša</h2>";
+        echo "<table>
         <tr>
-            <th>ID ocjene</th>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>ID studenta</th>
             <th>Predmet</th>
             <th>Ocjena</th>
-            <th>ID studenta</th>
-        </tr>
-        </table><br>";
+        </tr>";
 
-        foreach($sve_ocjene as $ocjene)
+        foreach($sve_ocjene5 as $ev5)
         {
-            echo "<table border=1>
-            <tr>
-                <td>{$ocjene['id']}</td>
-                <td>{$ocjene['predmet']}</td>
-                <td>{$ocjene['ocjena']}</td>
-                <td>{$ocjene['studenti_id']}</td>
-            </tr>
-            </table>";
+            echo "
+                <tr>
+                    <td>{$ev5['ime']}</td>
+                    <td>{$ev5['prezime']}</td>
+                    <td>{$ev5['studenti_id']}</td>
+                    <td>{$ev5['predmet']}</td>
+                    <td>{$ev5['ocjena']}</td>
+                </tr>";
+            
         }
+        echo "</table>";
     }
 
         // ispis evidencije iz baze
         public function prikaziEvidencija($evidencija)
         {
-            echo "<h2>Evidencija ocjena</h2>";
+            echo "<h2>Evidencija ocjena po predmetima</h2>";
             echo "<table>
             <tr>
                 <th>Ime</th>

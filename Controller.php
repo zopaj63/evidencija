@@ -37,11 +37,11 @@ class EvidencijaController
 
 
 
-    // prikaz svih ocjena iz baze
-    public function prikaziSveOcjene()
+    // prikaz svih ocjena 5 iz baze
+    public function prikaziSveOcjene5()
     {
-        $sve_ocjene=$this->model->dohvatiSveOcjene()->fetchAll(PDO::FETCH_ASSOC);
-        $this->view->prikaziOcjene($sve_ocjene);
+        $sve_ocjene5=$this->model->dohvatiSveOcjene5()->fetchAll(PDO::FETCH_ASSOC);
+        $this->view->prikaziOcjene5($sve_ocjene5);
     }
 
     // prikaz evidencije iz baze
@@ -62,11 +62,11 @@ class EvidencijaController
 
             $this->model->dodajOcjenu();
 
-            $message_good="Uspješna registracija!";
+            $message_good="Ocjena uspješno dodana!";
         }
         else
         {
-            $message_bad="Korisnik s tim e-mailom već postoji!";
+            $message_bad="Došlo je do greške!";
         }
     }
 
