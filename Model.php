@@ -24,13 +24,11 @@ class OcjenaModel
     {
         $stmt=$this->conn->prepare("INSERT INTO ".$this->table."(predmet, ocjena, studenti_id) VALUES (:predmet, :ocjena, :studenti_id)");
 
-        $this->ime=htmlspecialchars(strip_tags($this->predmet));
-        $this->ocjena=$ocjena;
-        $this->student_id=$student_id;
+        $this->predmet=htmlspecialchars(strip_tags($this->predmet));
 
-        $stmt->bindParam(":predmet", $predmet);
-        $stmt->bindParam(":ocjena", $ocjena);
-        $stmt->bindParam(":studenti_id", $student_id);
+        $stmt->bindParam(":predmet", $this->predmet);
+        $stmt->bindParam(":ocjena", $this->ocjena);
+        $stmt->bindParam(":studenti_id", $this->studenti_id);
 
         if($stmt->execute())
         {
@@ -39,6 +37,7 @@ class OcjenaModel
         return false;
 
     }
+
 
     // dohvat svih ocjena 5 iz baze
     public function dohvatiSveOcjene5()

@@ -19,6 +19,8 @@ class EvidencijaController
         $this->view=$view;
     }
 
+    /*
+    prebačeno i index.php
     // dohvat podataka s forme za registraciju
     public function dohvatiOcjene()
     {
@@ -34,7 +36,7 @@ class EvidencijaController
             $message_bad="Popunite sva polja";
         }
     }
-
+    */
 
 
     // prikaz svih ocjena 5 iz baze
@@ -53,22 +55,14 @@ class EvidencijaController
 
     // obrada forme za upis ocjene
     public function upisiNovuOcjenu($predmet, $ocjena, $studenti_id)
-    {
-        if (isset($_POST['submit']))
-        {     
+    {   
             $this->model->predmet=$predmet;
             $this->model->ocjena=$ocjena;
             $this->model->studenti_id=$studenti_id;
 
             $this->model->dodajOcjenu();
-
-            $message_good="Ocjena uspješno dodana!";
-        }
-        else
-        {
-            $message_bad="Došlo je do greške!";
-        }
     }
+
 
 
 }

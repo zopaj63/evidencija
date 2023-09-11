@@ -46,10 +46,26 @@
 
         $controller=new EvidencijaController($model, $view);
         
+        // upis ocjene u bazu
+        //$controller->dohvatiOcjene();
+        //$controller->upisiNovuOcjenu($predmet, $ocjena, $studenti_id);
+
+        
+        if ($_POST)
+        {
+            $predmet=$_POST["predmet"];
+            $ocjena=$_POST["ocjena"];
+            $studenti_id=$_POST["studenti_id"];
+
+            $controller->upisiNovuOcjenu($predmet, $ocjena, $studenti_id);
+
+        }
+        
+
 
         // ispis svih odlikaša
-        $controller->prikaziSveOcjene5();
-        $message_good="Uspješan prikaz svih odlikaša";
+       $controller->prikaziSveOcjene5();
+       $message_good="Uspješan prikaz svih odlikaša";
 
         // ispis svih studenata
 
