@@ -20,7 +20,7 @@ class EvidencijaController
     }
 
     /*
-    prebačeno i index.php
+    prebačeno u index.php
     // dohvat podataka s forme za registraciju
     public function dohvatiOcjene()
     {
