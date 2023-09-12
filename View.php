@@ -3,8 +3,25 @@
 class OcjenaView
 {
     
-    // medoda za prikaz forme
-    public function prikaziFormu()
+    // medoda za prikaz forme za unos studenta
+    public function prikaziFormuStudent()
+    {
+        echo'
+        <hr>
+        <h2>Unos novog studenta</h2>
+            <form method="post" action="">
+                <input type="text" name ="ime" placeholder="Ime" required><br><br>
+                <input type="text" name ="prezime" placeholder="Prezime" required><br><br>
+                <input type="number" name ="id" placeholder="ID studenta" required><br><br>
+    
+                <input type="submit" name="sbmtstudent" value="Unesi studenta">
+            </form>
+            <br><hr>
+        ';
+        }
+
+    // medoda za prikaz forme za unos ocjene
+    public function prikaziFormuOcjena()
     {
         echo'
         <hr>
@@ -14,7 +31,7 @@ class OcjenaView
                 <input type="number" name ="ocjena" placeholder="Ocjena" required><br><br>
                 <input type="number" name ="studenti_id" placeholder="ID studenta" required><br><br>
 
-                <input type="submit" value="Upiši ocjenu">
+                <input type="submit" name="sbmtocjena" value="Unesi ocjenu">
             </form>
             <br><hr>
         ';
@@ -47,6 +64,30 @@ class OcjenaView
         }
         echo "</table>";
     }
+
+        // ispis svih ocjena 5 iz baze
+        public function prikaziSveStudente($svi_studenti)
+        {
+            echo "<h2>Popis svih studenata u bazi</h2>";
+            echo "<table>
+            <tr>
+                <th>Ime</th>
+                <th>Prezime</th>
+                <th>ID studenta</th>
+            </tr>";
+    
+            foreach($svi_studenti as $student)
+            {
+                echo "
+                    <tr>
+                        <td>{$student['ime']}</td>
+                        <td>{$student['prezime']}</td>
+                        <td>{$student['id']}</td>
+                    </tr>";
+                
+            }
+            echo "</table>";
+        }
 
         // ispis evidencije iz baze
         public function prikaziEvidencija($evidencija)

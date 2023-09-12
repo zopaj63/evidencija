@@ -40,18 +40,35 @@
         }
 
         $view=new OcjenaView();
-        $view->prikaziFormu();
+        $view->prikaziFormuStudent();
+        $view->prikaziFormuOcjena();
 
         $model=new OcjenaModel();
 
         $controller=new EvidencijaController($model, $view);
         
-        // upis ocjene u bazu
+        // unos ocjene u bazu (ne radi kad se forma čita u controlleru)
         //$controller->dohvatiOcjene();
         //$controller->upisiNovuOcjenu($predmet, $ocjena, $studenti_id);
 
-        
-        if ($_POST)
+
+        // unos novog studenta
+        if (isset($_POST['sbmtstudent']))
+        {
+            $ime=$_POST["ime"];
+            $prezime=$_POST["prezime"];
+            $id=$_POST["id"];
+
+            $controller->upisiNoviStudent($ime, $prezime, $id);
+            $message_good="Student uspješno dodan!";
+        }
+
+        // ispis svih studenata
+        $controller->prikaziSveStudente();
+        $message_good="Uspješan prikaz svih studenata";
+
+        // unos nove ocjene
+        if (isset($_POST['sbmtocjena']))
         {
             $predmet=$_POST["predmet"];
             $ocjena=$_POST["ocjena"];
@@ -66,9 +83,6 @@
         // ispis svih odlikaša
        $controller->prikaziSveOcjene5();
        $message_good="Uspješan prikaz svih odlikaša";
-
-        // ispis svih studenata
-
 
         // ispis evidencije
         $controller->prikaziEvidencija();

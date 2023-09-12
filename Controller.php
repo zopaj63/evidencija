@@ -46,6 +46,13 @@ class EvidencijaController
         $this->view->prikaziOcjene5($sve_ocjene5);
     }
 
+        // prikaz svih studenata
+        public function prikaziSveStudente()
+        {
+            $svi_studenti=$this->model->dohvatiSveStudente()->fetchAll(PDO::FETCH_ASSOC);
+            $this->view->prikaziSveStudente($svi_studenti);
+        }
+
     // prikaz evidencije iz baze
     public function prikaziEvidencija()
     {
@@ -62,6 +69,16 @@ class EvidencijaController
 
             $this->model->dodajOcjenu();
     }
+
+        // obrada forme za upis studenta
+        public function upisiNoviStudent($ime, $prezime, $id)
+        {   
+                $this->model->ime=$ime;
+                $this->model->prezime=$prezime;
+                $this->model->id=$id;
+    
+                $this->model->dodajStudent();
+        }
 
 
 

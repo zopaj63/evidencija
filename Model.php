@@ -11,6 +11,9 @@ class OcjenaModel
     public $predmet;
     public $ocjena;
     public $studenti_id;
+    public $ime;
+    public $prezime;
+    public $id;
 
     public function __construct()
     {
@@ -38,6 +41,26 @@ class OcjenaModel
 
     }
 
+        // query za upis novog studenta u bazu
+        public function dodajStudent()
+        {
+            $stmt=$this->conn->prepare("INSERT INTO studenti (ime, prezime, id) VALUES (:ime, :prezime, :id)");
+    
+            $this->ime=htmlspecialchars(strip_tags($this->ime));
+            $this->prezime=htmlspecialchars(strip_tags($this->prezime));
+    
+            $stmt->bindParam(":ime", $this->ime);
+            $stmt->bindParam(":prezime", $this->prezime);
+            $stmt->bindParam(":id", $this->id);
+    
+            if($stmt->execute())
+            {
+                return true;
+            }
+            return false;
+    
+        }
+
 
     // dohvat svih ocjena 5 iz baze
     public function dohvatiSveOcjene5()
@@ -46,6 +69,15 @@ class OcjenaModel
         $stmt->execute();
         return $stmt;
 
+    }
+
+    // dohvat svih ocjena 5 iz baze
+    public function dohvatiSveStudente()
+    {
+        $stmt=$this->conn->prepare("SELECT studenti.ime, studenti.prezime, studenti.id FROM studenti");
+        $stmt->execute();
+        return $stmt;
+    
     }
 
     // dohvat evidencije iz baze
